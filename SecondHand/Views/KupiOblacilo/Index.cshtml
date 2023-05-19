@@ -1,0 +1,43 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@model List<Oblacila>
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<body>
+    @if (SignInManager.IsSignedIn(User))
+    {
+
+
+        <h1>Nakup izdelka</h1>
+        @foreach (var item in Model)
+        {
+            <form asp-area="" asp-controller="KupiOblacilo" asp-action="Potrditev" asp-route-id="@item.Id">
+                <label for="ime">Ime:</label>
+                <input type="text" id="ime" name="ime" required><br><br>
+
+                <label for="naslov">Naslov:</label>
+                <input type="text" id="naslov" name="naslov" required><br><br>
+
+                <label for="telefon">Telefonska številka:</label>
+                <input type="tel" id="telefon" name="telefon" required><br><br>
+
+                <label for="email">E-pošta:</label>
+                <input type="email" id="email" name="email" required><br><br>
+
+                <label for="kartica">Številka bančne kartice:</label>
+                <input type="text" id="kartica" name="kartica" required><br><br>
+
+                <label for="cvv">CVV koda:</label>
+                <input type="password" id="cvv" name="cvv" required><br><br>
+
+                <input type="submit" value="Kupi">
+            </form>
+        }
+
+    }
+    else
+    {
+        <h1>ZA NAKUP OBLAČILA MORATE BITI PRIJAVLJENI</h1>
+    }
+</body>

@@ -1,0 +1,70 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@model IEnumerable<SecondHand.Models.moskioblacilaskupnimodel>
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+	ViewData["Title"] = "List of Oblacila";
+}
+<head>
+    <style>
+        table{
+            background-color: #F1E3E3;
+        width:95%;
+        }
+        th{
+            background-color: #ADADAD;
+        }
+        div.tabela{
+            margin-bottom:20px;
+        }
+        th.cena{
+            background-color:lightblue;
+            width:15%;
+            text-align:center;
+        }
+
+        td.opis {
+            text-align:center;
+            width: 45%;
+        }
+    </style>
+</head>
+<div class="row">
+	<div class="col-md-8 offset-md-2">
+		
+				@foreach (var item in Model)
+				{
+                    <div class="tabela">
+                    <table>
+                        <th colspan="5" style="text-align:center">@item.oblacilapodatki.ImeOblacila</th>
+                        <tr>
+                            <td style="width;20%">                      
+                                 <img src="@item.oblacilapodatki.SlikaOblekeUrl" width="100px" height="150px" alt="@item.oblacilapodatki.ImeOblacila">
+                            </td>
+
+                            <td class="opis">@item.oblacilapodatki.opis</td>
+
+                            <td style="width:20%">
+                            <p><b>Tel:</b> @item.uporabnikpodatki.PhoneNumber</p>
+                            <p><b>Lokacija:</b> @item.uporabnikpodatki.City</p>
+
+                            </td>
+                            
+
+                            <th rowspan="3" class="cena"><h2>@item.oblacilapodatki.cena €</h2></th>
+                            <td>
+                            @if (SignInManager.IsSignedIn(User))
+                            {
+                                <a asp-area="" asp-controller="KupiOblacilo" asp-action="Index" asp-route-id="@item.oblacilapodatki.Id">Kupi</a>
+                            }
+                        </td>
+                        
+                        </tr>
+                    </table>
+
+                    </div>
+				}
+	</div>
+</div>

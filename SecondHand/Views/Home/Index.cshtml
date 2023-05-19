@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<head>
+    <style>
+        .images {
+            display: flex;
+            justify-content: space-between;
+            
+        }
+        .stolec{
+            width:100%;
+        }
+
+            .images img {
+                width: 100%;
+                height: 600px;
+            }
+        h2{
+        text-align:center;
+        }
+    </style>
+</head>
+
+<div class="images">
+    <div class="stolpec">
+        <a asp-area="" asp-controller="MoskeKategorije" asp-action="Index">
+        <h2>Moška moda</h2>
+        <img src="https://images.unsplash.com/photo-1517940310602-26535839fe84?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Moška Oblačila">
+        </a>
+    </div>
+    <div class ="stolpec">
+        <a asp-area="" asp-controller="ZenskaOblacila" asp-action="Index">
+        <h2>Ženska moda</h2>
+        <img src="https://images.unsplash.com/photo-1495490140452-5a226aef25d4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Ženska Oblačila">
+        </a>
+    </div>
+</div>
